@@ -1,0 +1,70 @@
+2026-09-05 15:13:05,334 | INFO    | statring the pipline
+2026-09-05 15:13:05,334 | INFO    | read the csv file from c:\Users\samir\fifa_etl_project\data\raw_data\fifa_world_cup_2026_player_performance.csv
+2026-09-05 15:13:05,603 | INFO    | the raw data loaded successfully 54600 rows , 75 columns
+2026-09-05 15:13:05,603 | INFO    | start checking the schema of data
+2026-09-05 15:13:05,603 | INFO    | the schema of data is valid
+2026-09-05 15:13:05,603 | INFO    | statr  transformation 
+2026-09-05 15:13:05,603 | INFO    | start checking duplicated rows
+2026-09-05 15:13:05,695 | INFO    | found duplicated 0 rows
+2026-09-05 15:13:05,695 | INFO    | start cleaning columns name
+2026-09-05 15:13:05,696 | INFO    | print name of columns after cleaning the name of columns Index(['player_id', 'player_name', 'age', 'nationality', 'team',
+       'jersey_number', 'position', 'height_cm', 'weight_kg', 'preferred_foot',
+       'club_name', 'market_value_eur', 'match_id', 'match_date', 'stadium',
+       'city', 'opponent_team', 'tournament_stage', 'match_result',
+       'goals_team', 'goals_opponent', 'minutes_played', 'goals', 'assists',
+       'shots', 'shots_on_target', 'expected_goals_xg', 'expected_assists_xa',
+       'key_passes', 'successful_passes', 'total_passes', 'pass_accuracy',
+       'dribbles_attempted', 'successful_dribbles', 'crosses',
+       'successful_crosses', 'tackles', 'interceptions', 'clearances',
+       'blocks', 'aerial_duels_won', 'aerial_duels_lost', 'recoveries',
+       'defensive_actions', 'fouls_committed', 'fouls_suffered',
+       'yellow_cards', 'red_cards', 'offsides', 'saves', 'save_percentage',
+       'punches', 'clean_sheet', 'goals_conceded', 'penalty_saves',
+       'distance_covered_km', 'sprint_distance_km', 'top_speed_kmh',
+       'accelerations', 'decelerations', 'stamina_score', 'player_rating',
+       'performance_score', 'offensive_contribution', 'defensive_contribution',
+       'possession_impact', 'pressure_resistance', 'creativity_score',
+       'consistency_score', 'clutch_performance_score',
+       'total_goals_tournament', 'total_assists_tournament',
+       'total_minutes_tournament', 'player_of_match_awards',
+       'tournament_rating'],
+      dtype='object')
+2026-09-05 15:13:05,705 | INFO    | transformation required numric columns to numric successfully
+2026-09-05 15:13:05,705 | INFO    | starting search for missing values
+2026-09-05 15:13:05,734 | INFO    | filled missing values in tournament_rating successfully
+2026-09-05 15:13:05,759 | INFO    | start checking the validation of data
+2026-09-05 15:13:06,783 | INFO    | the cleaned data saved successfully in c:\Users\samir\fifa_etl_project\data\output\cleaned_data.csv with 54600 rows and 79 columns
+2026-09-05 15:13:06,783 | INFO    | start checking the business validation of data
+2026-09-05 15:13:06,783 | WARNING | there is problem in goals > shots_on_target and corrected 2254 values
+2026-09-05 15:13:06,783 | INFO    | start checking the driven columns of data
+2026-09-05 15:13:06,812 | INFO    | calculated the goals_per_90 successfully
+2026-09-05 15:13:06,839 | INFO    | calculated the assists_per_90 successfully
+2026-09-05 15:13:06,861 | INFO    | calculated the goal_contribution_per_90 successfully
+2026-09-05 15:13:06,862 | INFO    | calculated the pass_accuracy_percentage successfully
+2026-09-05 15:13:06,862 | INFO    | calculated the save_percentage_percentage successfully
+2026-09-05 15:13:06,877 | INFO    | calculated the defensive_actions_per_90 successfully
+2026-09-05 15:13:07,966 | INFO    | the driven data saved successfully in c:\Users\samir\fifa_etl_project\data\output\driven_data.csv with 54600 rows and 85 columns
+2026-09-05 15:13:07,966 | INFO    | start aggregating the data
+2026-09-05 15:13:07,987 | INFO    | the team summary data saved successfully in c:\Users\samir\fifa_etl_project\data\output\team_summary.csv with 48 rows and 7 columns
+2026-09-05 15:13:08,002 | INFO    | the player summary data saved successfully in c:\Users\samir\fifa_etl_project\data\output\player_summary.csv with 1245 rows and 7 columns
+2026-09-05 15:13:08,002 | INFO    | start calculating the top players based on goals scored
+2026-09-05 15:13:08,021 | INFO    | the top players data saved successfully in c:\Users\samir\fifa_etl_project\data\output\top_players.csv with 1248 rows and 6 columns
+2026-09-05 15:13:08,305 | INFO    | Connected to the database successfully
+2026-09-05 15:13:08,305 | INFO    | Starting loading data into bronze.fifa_world_cup_2026_player_performance
+2026-09-05 15:13:08,305 | INFO    | Data shape: (54600, 85)
+2026-09-05 15:19:23,543 | INFO    | Data loaded into table 'bronze.fifa_world_cup_2026_player_performance' successfully
+2026-09-05 15:19:23,955 | INFO    | Starting loading data into silver.cleaned_data
+2026-09-05 15:19:23,955 | INFO    | Data shape: (54600, 79)
+2026-09-05 15:19:32,516 | INFO    | Data loaded into table 'silver.cleaned_data' successfully
+2026-09-05 15:19:32,957 | INFO    | Starting loading data into silver.driven_data
+2026-09-05 15:19:32,958 | INFO    | Data shape: (54600, 85)
+2026-09-05 15:25:43,284 | INFO    | Data loaded into table 'silver.driven_data' successfully
+2026-09-05 15:25:43,368 | INFO    | Starting loading data into silver.team_summary
+2026-09-05 15:25:43,370 | INFO    | Data shape: (48, 7)
+2026-09-05 15:25:43,615 | INFO    | Data loaded into table 'silver.team_summary' successfully
+2026-09-05 15:25:43,651 | INFO    | Starting loading data into silver.player_summary
+2026-09-05 15:25:43,651 | INFO    | Data shape: (1245, 7)
+2026-09-05 15:25:43,919 | INFO    | Data loaded into table 'silver.player_summary' successfully
+2026-09-05 15:25:43,934 | INFO    | Starting loading data into silver.top_players
+2026-09-05 15:25:43,934 | INFO    | Data shape: (1248, 6)
+2026-09-05 15:25:44,634 | INFO    | Data loaded into table 'silver.top_players' successfully
